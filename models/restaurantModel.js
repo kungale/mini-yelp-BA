@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema({
-  id: { type: String, required: true },
+  
   user_id: { type: String, required: true },
   text: { type: String, required: true },
   rating: { type: Number, required: true },
@@ -16,7 +16,7 @@ const locationSchema = new mongoose.Schema({
 });
 
 const restaurantSchema = new mongoose.Schema({
-  id: { type: String, required: true },
+  
   name: { type: String, required: true },
   image_URL: { type: String, required: true },
   location: { type: locationSchema, required: true },
@@ -26,3 +26,5 @@ const restaurantSchema = new mongoose.Schema({
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);
+
+export default Restaurant
