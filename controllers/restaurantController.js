@@ -43,3 +43,31 @@ export const handleAddRestaurant = async (req, res) => {
     res.status(500).send({ success: false, error: error.message });
   }
 };
+
+
+export const handleGetByCity = async (req, res) => {
+    try {
+        console.log("get one restaurant", req.query);
+
+        const restaurant = await Restaurant.find({"location.city": new RegExp(req.query.city, 'i')});
+        console.log("restaurant", restaurant);
+        res.send(restaurant);
+    } catch (error) {
+        console.log("error in get one post: ", error.message);
+
+        res.status(500).send({success: false, error: error.message});
+    }
+}
+export const handleGetByTag = async (req, res) => {
+    try {
+        console.log("get one restaurant", req.query);
+
+        const restaurant = await Restaurant.find({"tags": new RegExp(req.query.tag, 'i')});
+        console.log("restaurant", restaurant);
+        res.send(restaurant);
+    } catch (error) {
+        console.log("error in get one post: ", error.message);
+
+        res.status(500).send({success: false, error: error.message});
+    }
+}
